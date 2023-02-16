@@ -1,24 +1,29 @@
-"use strict";
 // 1:
 // Entrada: un número pedido con un prompt. Salida: Una tabla con los números del
 // 1 al número dado con sus cuadrados y cubos. Utiliza document.write para producir la salida
-const form = document.getElementById("act1");
-const input = form.elements.namedItem("number");
-const table = document.getElementById("act1Table");
-form.addEventListener("submit", (e) => {
+
+const form1 = document.getElementById("act1") as HTMLFormElement;
+const input1 = form1.elements.namedItem("number") as HTMLInputElement;
+const table1 = document.getElementById("act1Table") as HTMLTableElement;
+
+form1.addEventListener("submit", (e) => {
   e.preventDefault();
-  const number = parseInt(input.value);
-  table.innerHTML = `<tr><th>Número</th><th>Cuadrado</th><th>Cubo</th></tr>`;
+  const number = parseInt(input1.value);
+  table1.innerHTML = `<tr><th>Número</th><th>Cuadrado</th><th>Cubo</th></tr>`;
   for (let i = 1; i <= number; i++) {
-    table.innerHTML += `<tr><td>${i}</td><td>${i ** 2}</td><td>${
+    table1.innerHTML += `<tr><td>${i}</td><td>${i ** 2}</td><td>${
       i ** 3
     }</td></tr>`;
   }
 });
+
 // 2:
 // Entrada: Usando un prompt se pide el resultado de la suma de 2 números generados
 // de manera aleatoria. Salida: La página debe indicar si el resultado fue correcto o incorrecto,
 // y el tiempo que tardó el usuario en escribir la respuesta.
+
+const;
+
 // 3:
 // Función: contador. Parámetros: Un arreglo de números. Regresa: La cantidad de
 // números negativos en el arreglo, la cantidad de 0's, y la cantidad de valores mayores
