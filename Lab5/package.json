@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "build-css": "tailwindcss build src/tailwind.css -o src/style.css"
+    "build-css": "tailwindcss build -i src/tailwind.css -o src/style.css"
   },
   "author": "",
   "license": "MIT",

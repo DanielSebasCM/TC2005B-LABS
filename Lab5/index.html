@@ -9,53 +9,84 @@
   </head>
 
   <body>
-    <form id="act1From" class="">
-      <input
-        type="number"
-        name="number"
-        placeholder="Number of elements (int)"
-      />
-      <button type="submit">Submit</button>
+    <div id="act1" class="p-4 w-screen border-b-2">
+      <h2 class="font-bold mb-4">Activity 1, table of squares an cubes</h2>
+      <form id="act1From">
+        <input
+          type="number"
+          name="number"
+          placeholder="Number of elements (int)"
+          class="border-2 w-1/2 shadow"
+        />
+        <button type="submit" class="btn">Submit</button>
+      </form>
       <table id="act1Table"></table>
-    </form>
+    </div>
 
-    <div id="act2" class="act-container">
-      <button id="act2Btn">Generate</button>
-      <p><span id="randNum1">""</span> + <span id="randNum2">""</span></p>
-      <form id="act2From">
-        <input type="number" name="result" placeholder="result" />
+    <div id="act2" class="act-card">
+      <h2 class="font-bold mb-4">Activity 2, random numbers sum timer</h2>
+      <form id="act2From" class="flex gap-4">
+        <button id="act2Btn" type="button" class="btn">Generate</button>
+        <p><span id="randNum1">""</span> + <span id="randNum2">""</span></p>
+        <input
+          type="number"
+          name="result"
+          placeholder="result"
+          class="border-2 w-1/2 shadow"
+        />
       </form>
       <p id="act2Feedback"></p>
     </div>
 
-    <div id="act3" class="act-container">
+    <div id="act3" class="act-card">
+      <h2 class="font-bold mb-4">
+        Activity 3, count poseitive, negative and zeros
+      </h2>
       <form id="act3Form">
-        <input type="text" name="list" placeholder="Lista" />
-        <button type="submit">Submit</button>
+        <input
+          type="text"
+          name="list"
+          placeholder="Lista"
+          class="border-2 w-1/2 shadow"
+        />
+        <button type="submit" class="btn">Submit</button>
       </form>
       <p id="act3Feedback"></p>
     </div>
 
-    <div id="act4" class="act-container">
+    <div id="act4" class="act-card">
+      <h2 class="font-bold mb-4">Activity 4, average lists</h2>
       <form id="act4Form">
-        <input type="text" name="lists" placeholder="Listas (separar por ;)" />
-        <button type="submit">Submit</button>
+        <input
+          type="text"
+          name="lists"
+          placeholder="Listas (separar por ;)"
+          class="border-2 w-1/2 shadow"
+        />
+        <button type="submit" class="btn">Submit</button>
       </form>
       <p id="act4Feedback"></p>
     </div>
 
-    <div id="act5" class="act-container">
+    <div id="act5" class="act-card">
+      <h2 class="font-bold mb-4">Activity 5, inverse number</h2>
       <form id="act5Form">
-        <input type="number" name="number" placeholder="Número" />
-        <button type="submit">Submit</button>
+        <input
+          type="number"
+          name="number"
+          placeholder="Número"
+          class="border-2 w-1/2 shadow"
+        />
+        <button type="submit" class="btn">Submit</button>
       </form>
       <p id="act5Feedback"></p>
     </div>
 
-    <div id="act6">
+    <div id="act6" class="act-card">
+      <h2 class="font-bold mb-4">Activity 6, have fun</h2>
       <p>Problema: Quiero una foto de un gato</p>
-      <button id="act6Btn">Get a cat</button>
-      <img id="gatoImg" />
+      <button id="act6Btn" class="btn w-40">Get a cat</button>
+      <img id="gatoImg" class="w-1/2" />
     </div>
 
     <script src="src/index.js"></script>
