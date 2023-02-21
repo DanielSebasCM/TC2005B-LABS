@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <title>Lab 6</title>
+  </head>
+  <body>
+    <div class="columns p-4">
+      <div class="column">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+                src="https://bulma.io/images/placeholders/1280x960.png"
+                alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left"></div>
+              <div class="media-content">
+                <p class="title is-4">John Smith</p>
+              </div>
+            </div>
+
+            <div class="content is-5">
+              <span class="description"
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod
+                hic aut amet, eaque vitae id ullam ratione tempore, iusto
+                perspiciatis exercitationem expedita distinctio sed cum
+                doloribus? Dolorem ullam dolores nulla!</span
+              >
+              <br />
+              <span class="price" class="has-text-weight-bold">$ 100</span>
+              <br />
+
+              <input
+                class="input is-normal"
+                type="number"
+                min="0"
+                placeholder="Ammount"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+                src="https://bulma.io/images/placeholders/1280x960.png"
+                alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left"></div>
+              <div class="media-content">
+                <p class="title is-4">John Smith</p>
+              </div>
+            </div>
+
+            <div class="content is-5">
+              <span class="description"
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod
+                hic aut amet, eaque vitae id ullam ratione tempore, iusto
+                perspiciatis exercitationem expedita distinctio sed cum
+                doloribus? Dolorem ullam dolores nulla!</span
+              >
+              <br />
+              <span class="price" class="has-text-weight-bold">$ 100</span>
+              <br />
+
+              <input
+                class="input is-normal"
+                type="number"
+                min="0"
+                placeholder="Ammount"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+                src="https://bulma.io/images/placeholders/1280x960.png"
+                alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left"></div>
+              <div class="media-content">
+                <p class="title is-4">John Smith</p>
+              </div>
+            </div>
+
+            <div class="content is-5">
+              <span class="description"
+                >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod
+                hic aut amet, eaque vitae id ullam ratione tempore, iusto
+                perspiciatis exercitationem expedita distinctio sed cum
+                doloribus? Dolorem ullam dolores nulla!</span
+              >
+              <br />
+              <span class="price" class="has-text-weight-bold">$ 100</span>
+              <br />
+
+              <input
+                class="input is-normal"
+                type="number"
+                min="0"
+                placeholder="Ammount"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="section products-table">
+        <div class="columns table-header">
+          <div class="column is-half">Product</div>
+          <div class="column">Quantity</div>
+          <div class="column">Price</div>
+          <div class="column">Total</div>
+        </div>
+        <div class="columns talbe-row">
+          <div class="column is-half name">Product 1</div>
+          <div class="column ammount">1</div>
+          <div class="column price">$ 100</div>
+          <div class="column total">$ 100</div>
+        </div>
+        <div class="columns talbe-row">
+          <div class="column is-half name">Product 1</div>
+          <div class="column ammount">1</div>
+          <div class="column price">$ 100</div>
+          <div class="column total">$ 100</div>
+        </div>
+        <div class="columns talbe-row">
+          <div class="column is-half name">Product 1</div>
+          <div class="column ammount">1</div>
+          <div class="column price">$ 100</div>
+          <div class="column total">$ 100</div>
+        </div>
+        <div class="columns talbe-footer">
+          <div class="column is-half name">Total</div>
+          <div class="column ammount"></div>
+          <div class="column price"></div>
+          <div class="column total">$ 0</div>
+        </div>
+
+        <ol>
+          <li>
+            ¿Por qué es una buena práctica usar JavaScript para checar que sean
+            válidos los inputs de las formas antes de enviar los datos al
+            servidor?
+            <p>
+              Porque si no se hace, el servidor puede recibir datos que no son
+              válidos y eso puede causar problemas.
+            </p>
+          </li>
+          <li>
+            ¿Cómo puedes saltarte la seguridad de validaciones hechas con
+            JavaScript?
+            <p>
+              Desactivando JavaScript en el navegador, o usando un navegador que
+              no soporte JavaScript.
+            </p>
+          </li>
+          <li>
+            Si te puedes saltar la seguridad de las validaciones de JavaScript,
+            entonces ¿por qué la primera pregunta dice que es una buena
+            práctica?
+            <p>
+              Porque aunque se pueda saltar la validación, es mejor que el
+              servidor no reciba datos que no son válidos. De igual manera nos
+              ayuda a mejorar la experienia del usuario dandole feedback si
+              realizó algo mal antes de enviar los datos al servidos y que
+              retorne un error desde el backend.
+            </p>
+          </li>
+        </ol>
+      </section>
+    </div>
+
+    <script type="module" src="src/index.ts"></script>
+  </body>
+</html>
