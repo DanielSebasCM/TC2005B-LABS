@@ -1,12 +1,18 @@
 import express from "express";
 import fs from "fs";
+import { fileURLToPath } from "url";
+import path from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const router = express.Router();
 
 router.get("/", (req, res) => {
+  console.log(path.resolve());
   res.contentType("text/html");
 
-  const endpoints = fs.readdirSync("./public");
+  const endpoints = fs.readdirSync(path.join(__dirname, "../public"));
   const content = endpoints.map((endpoint) => {
     return `<li><a href="${endpoint}">${endpoint}</a></li>`;
   });
@@ -17,11 +23,11 @@ router.get("/", (req, res) => {
 router.post("/users", (req, res) => {
   console.log(req.body);
 
-  const path = "./public/users/users.txt";
+  const dir = path.join(__dirname, "../public/users/users.txt");
 
   res.statusCode = 201;
-  if (!fs.existsSync(path)) {
-    fs.writeFileSync(path, "Users: \n\n");
+  if (!fs.existsSync(dir)) {
+    fs.writeFileSync(dir, "Users: \n\n");
   }
 
   let contenido = "";
@@ -30,7 +36,7 @@ router.post("/users", (req, res) => {
   contenido += `email: ${req.body.email}\n`;
   contenido += `age: ${req.body.age}\n\n`;
 
-  fs.appendFileSync(path, contenido);
+  fs.appendFileSync(dir, contenido);
   res.send("User created");
 });
 
