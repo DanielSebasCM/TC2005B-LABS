@@ -29,7 +29,7 @@ function getHandler(url, response) {
     try {
       contenido = fs.readFileSync(`./src${url}`).toString();
     } catch (error) {
-      throw new Error("Not found");
+      throw new Error("404 Not found");
     }
   }
   response.write(contenido);
@@ -37,8 +37,7 @@ function getHandler(url, response) {
 }
 
 async function postHandler(request, response) {
-  const { url } = request;
-
+  const url = request.url;
   const body = await parseBody(request);
   console.log("Body: ", body);
 
@@ -49,19 +48,20 @@ async function postHandler(request, response) {
       if (!fs.existsSync(path)) {
         fs.writeFileSync(path, "Users: \n");
       }
-      const contenido = `
-name: ${body.name}
-lastname: ${body.lastname}
-email: ${body.email}
-age: ${body.age}
-`;
+
+      let contenido = "";
+      contenido += `name: ${req.body.name}\n`;
+      contenido += `lastname: ${req.body.lastname}\n`;
+      contenido += `email: ${req.body.email}\n`;
+      contenido += `age: ${req.body.age}\n\n`;
       fs.appendFileSync(path, contenido);
 
       response.write("User created");
       response.end("");
       break;
+
     default:
-      throw new Error("Not found");
+      throw new Error("404 Not found");
   }
 }
 
