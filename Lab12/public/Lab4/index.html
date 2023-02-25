@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Lab 4</title>
+  </head>
+
+  <body>
+    <form id="act1From" class="act-container">
+      <input
+        type="number"
+        name="number"
+        placeholder="Number of elements (int)"
+      />
+      <button type="submit">Submit</button>
+      <table id="act1Table"></table>
+    </form>
+
+    <div id="act2" class="act-container">
+      <button id="act2Btn">Generate</button>
+      <p><span id="randNum1">""</span> + <span id="randNum2">""</span></p>
+      <form id="act2From">
+        <input type="number" name="result" placeholder="result" />
+      </form>
+      <p id="act2Feedback"></p>
+    </div>
+
+    <div id="act3" class="act-container">
+      <form id="act3Form">
+        <input type="text" name="list" placeholder="Lista" />
+        <button type="submit">Submit</button>
+      </form>
+      <p id="act3Feedback"></p>
+    </div>
+
+    <div id="act4" class="act-container">
+      <form id="act4Form">
+        <input type="text" name="lists" placeholder="Listas (separar por ;)" />
+        <button type="submit">Submit</button>
+      </form>
+      <p id="act4Feedback"></p>
+    </div>
+
+    <div id="act5" class="act-container">
+      <form id="act5Form">
+        <input type="number" name="number" placeholder="Número" />
+        <button type="submit">Submit</button>
+      </form>
+      <p id="act5Feedback"></p>
+    </div>
+
+    <div id="act6">
+      <p>Problema: Quiero una foto de un gato</p>
+      <button id="act6Btn">Get a cat</button>
+      <img id="gatoImg" />
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
