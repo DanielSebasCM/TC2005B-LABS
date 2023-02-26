@@ -9,7 +9,6 @@ const __dirname = path.dirname(__filename);
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  console.log(path.resolve());
   res.contentType("text/html");
 
   const endpoints = fs.readdirSync(path.join(__dirname, "../public"));

@@ -1,38 +1,39 @@
 import filesystem from "fs";
 import http from "http";
 
+const PORT = 3000;
+
 function average(array) {
-  let sum = 0;
-  for (let element of array) {
-    sum += element;
-  }
-  let r = sum / array.length;
-  return r;
+  const sum = array.reduce((a, b) => a + b);
+  return sum / array.length;
 }
 
-function text_file(string) {
+function writeStrToFile(string) {
   filesystem.writeFileSync("text_file.txt", string);
 }
 
 function reverseNum(numero) {
-  let abc = parseInt(numero.toString().split("").reverse().join(""));
-  return abc;
+  return parseInt(numero.toString().split("").reverse().join(""));
 }
 
-const a = [1, 2, 3, 4, 5];
-const s = "Hola";
-const num = 84217;
+console.log(average([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
 
-console.log(average(a));
-text_file(s);
-console.log(reverseNum(num));
+writeStrToFile(
+  "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod."
+);
+
+console.log(reverseNum(123456789));
 
 const server = http.createServer((request, response) => {
   console.log(request.url);
+
   response.setHeader("Content-Type", "text/html");
   const contenido = filesystem.readFileSync("content.html").toString();
   response.write(contenido);
+
   response.end("");
 });
 
-server.listen(3333);
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}/`);
+});

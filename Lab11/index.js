@@ -3,6 +3,8 @@ import router from "./routers/index.js";
 import { fileURLToPath } from "url";
 import path from "path";
 
+const PORT = 3000;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -19,7 +21,6 @@ router.use(express.static(path.join(__dirname, "public")));
 
 app.use(router);
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-  console.log("http://localhost:3000");
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });

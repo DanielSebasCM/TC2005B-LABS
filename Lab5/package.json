@@ -4,11 +4,13 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "build-css": "tailwindcss build -i src/tailwind.css -o src/style.css"
+    "build-css": "tailwindcss build -i src/tailwind.css -o src/style.css",
+    "start": "npm run build-css && parcel index.html"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "parsel": "^0.3.0",
     "typescript": "^4.9.5"
   },
   "dependencies": {

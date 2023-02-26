@@ -1,6 +1,8 @@
 import http from "http";
 import fs from "fs";
 
+const PORT = 3000;
+
 const server = http.createServer((request, response) => {
   const { url, method } = request;
   console.log("URL: ", url);
@@ -24,7 +26,16 @@ function getHandler(url, response) {
   let contenido = "";
   response.setHeader("Content-Type", "text/html");
   try {
-    contenido = fs.readFileSync(`./src${url}/index.html`).toString();
+    if (url === "/") {
+      const endpoints = fs.readdirSync("./src");
+      contenido = endpoints.map((endpoint) => {
+        return `<li><a href="${endpoint}">${endpoint}</a></li>`;
+      });
+
+      contenido = `<ul>${contenido.join("")}</ul>`;
+    } else {
+      contenido = fs.readFileSync(`./src${url}/index.html`).toString();
+    }
   } catch (error) {
     try {
       contenido = fs.readFileSync(`./src${url}`).toString();
@@ -36,38 +47,34 @@ function getHandler(url, response) {
   response.end("");
 }
 
-async function postHandler(request, response) {
-  const url = request.url;
-  const body = await parseBody(request);
+async function postHandler(req, res) {
+  const url = req.url;
+  const body = await parseBody(req);
   console.log("Body: ", body);
 
   switch (url) {
     case "/users":
       const path = "./src/users/users.txt";
-      response.statusCode = 201;
+      res.statusCode = 201;
       if (!fs.existsSync(path)) {
-        fs.writeFileSync(path, "Users: \n");
+        fs.writeFileSync(path, "Users: \n\n");
       }
 
       let contenido = "";
-      contenido += `name: ${req.body.name}\n`;
-      contenido += `lastname: ${req.body.lastname}\n`;
-      contenido += `email: ${req.body.email}\n`;
-      contenido += `age: ${req.body.age}\n\n`;
+      contenido += `name: ${body.name}\n`;
+      contenido += `lastname: ${body.lastname}\n`;
+      contenido += `email: ${body.email}\n`;
+      contenido += `age: ${body.age}\n\n`;
       fs.appendFileSync(path, contenido);
 
-      response.write("User created");
-      response.end("");
+      res.write("User created");
+      res.end("");
       break;
 
     default:
       throw new Error("404 Not found");
   }
 }
-
-server.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
 
 async function parseBody(request) {
   return new Promise((resolve, reject) => {
@@ -85,3 +92,7 @@ async function parseBody(request) {
       });
   });
 }
+
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}/`);
+});
