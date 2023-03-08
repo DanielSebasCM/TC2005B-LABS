@@ -1,0 +1,24 @@
+<!-- const endpoints = fs.readdirSync(path.join(__dirname, "../public"));
+const content = endpoints.map((endpoint) => {
+  return `<li><a href="${endpoint}">${endpoint}</a></li>`;
+}); -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./includes/head")%>
+  </head>
+  <body>
+    <%- include("./includes/header")%>
+    <main>
+      <ul class="p-4">
+        <% for( let i = 0; i < endpoints.length; i++ ) { %>
+        <li
+          class="bg bg-slate-100 border-2 rounded border-gray-400 p-2 my-2 hover:text-cyan-900 hover:border-gray-700 w-fit max-w-[50%] h-fit"
+        >
+          <a href="<%= endpoints[i] %>"><%= endpoints[i] %></a>
+        </li>
+        <% } %>
+      </ul>
+    </main>
+  </body>
+</html>
