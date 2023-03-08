@@ -1,0 +1,21 @@
+<% function toSentence(string) { return string.charAt(0).toUpperCase() +
+string.slice(1); } %>
+
+<table class="display-table">
+  <thead class="bg-gray-800 text-gray-50">
+    <tr>
+      <% for (let key in list[0]) { %>
+      <th><%= toSentence(key) %></th>
+      <% } %>
+    </tr>
+  </thead>
+  <tbody>
+    <% for (let i = 0; i < list.length; i++) { %>
+    <tr>
+      <% for (let key in list[i]) { %>
+      <td name="<%= key %>"><%= list[i][key] %></td>
+      <% } %>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
