@@ -1,3 +1,3 @@
-const LabN = 13;
+const LabN = 14;
 
 export { LabN };
