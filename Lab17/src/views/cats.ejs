@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./includes/head")%>
+    <script defer src="/scripts/cats.js"></script>
+  </head>
+  <body>
+    <%- include("./includes/header") %>
+    <main class="flex flex-col gap-4 justify-center items-center mt-4">
+      <%- include("./includes/display_table") %>
+      <img alt="cat" src="<%= img %>" class="h-32" id="cat-img" />
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        id="freeze-button"
+      >
+        <% if (frozen) { %> unfreeze <% } else {%> freeze <% } %>
+      </button>
+    </main>
+  </body>
+</html>
