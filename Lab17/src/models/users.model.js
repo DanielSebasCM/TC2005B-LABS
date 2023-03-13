@@ -18,7 +18,6 @@ class User {
 
   static async getAll() {
     let [users, _] = await db.execute(`SELECT * FROM user`);
-    console.log(users);
     return users.map((user) => new User(user));
   }
 
@@ -30,12 +29,12 @@ class User {
     return true;
   }
 
-  post() {
-    const [res, _] = db.execute(
+  async post() {
+    const res = await db.execute(
       `INSERT INTO user (name, last_name, email, age) VALUES (?, ?, ?, ?)`,
       [this.name, this.last_name, this.email, this.age]
     );
-    this.id = res.insertId;
+    this.id = res[0].insertId;
     return res;
   }
 

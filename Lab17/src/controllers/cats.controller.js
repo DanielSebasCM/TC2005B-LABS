@@ -9,6 +9,7 @@ const renderCats = async (req, res) => {
   let img = req.session.cat_frozen ? req.session.cat_img : await getCatImg();
   console.log("frozen: ", req.session.cat_frozen, "IMG: ", req.session.cat_img);
   let cats = randCats();
+  console.log("cats: ", cats);
   res.render("cats", { title: "Gatos", LabN, list: cats, frozen, img });
 };
 
