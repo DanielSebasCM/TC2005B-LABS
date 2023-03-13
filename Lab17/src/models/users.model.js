@@ -1,50 +1,47 @@
-import { faker } from "@faker-js/faker";
 import db from "../utils/db.js";
 
-const randUsers = (n = 5) => {
-  const users = [];
-  for (let i = 0; i < n; i++) {
-    users.push({
-      name: faker.name.firstName(),
-      last_name: faker.name.lastName(),
-      email: faker.internet.email(),
-      age: faker.datatype.number({ min: 18, max: 80 }),
-    });
-  }
-  return users;
-};
+class User {
+  constructor(user) {
+    User.verify(user);
 
-const getUsers = async () => {
-  let users = (await db.execute(`SELECT * FROM user`))[0];
-
-  if (users.length === 0) {
-    users = randUsers();
-    users.forEach(async (user) => {
-      await createUser(user);
-    });
+    this.id = user.id || null;
+    this.name = user.name;
+    this.last_name = user.last_name;
+    this.email = user.email;
+    this.age = user.age;
   }
 
-  users = (await db.execute(`SELECT * FROM user`))[0];
-
-  return users;
-};
-
-const createUser = async (user) => {
-  if (!user.email || !user.name || !user.last_name || !user.age) {
-    throw new Error("Faltan campos");
+  static async getById(id) {
+    let [user, _] = await db.execute(`SELECT * FROM user WHERE id = ?`, [id]);
+    return new User(user[0]);
   }
 
-  let result = await db.execute(
-    `INSERT INTO user (name, last_name, email, age) VALUES (?, ?, ?, ?)`,
-    [user.name, user.last_name, user.email, user.age]
-  );
+  static async getAll() {
+    let [users, _] = await db.execute(`SELECT * FROM user`);
+    console.log(users);
+    return users.map((user) => new User(user));
+  }
 
-  return result;
-};
+  static verify(user) {
+    if (!user.name) throw new Error("Name is required");
+    if (!user.last_name) throw new Error("Last name is required");
+    if (!user.email) throw new Error("Email is required");
+    if (!user.age) throw new Error("Age is required");
+    return true;
+  }
 
-const deleteUserById = async (uid) => {
-  let result = await db.execute(`DELETE FROM user WHERE id = ?`, [uid]);
-  return result;
-};
+  post() {
+    const [res, _] = db.execute(
+      `INSERT INTO user (name, last_name, email, age) VALUES (?, ?, ?, ?)`,
+      [this.name, this.last_name, this.email, this.age]
+    );
+    this.id = res.insertId;
+    return res;
+  }
 
-export { randUsers, getUsers, createUser, deleteUserById };
+  delete() {
+    return db.execute(`DELETE FROM user WHERE id = ?`, [this.id]);
+  }
+}
+
+export default User;
