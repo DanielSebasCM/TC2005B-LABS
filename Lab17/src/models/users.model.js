@@ -16,6 +16,11 @@ class User {
     return new User(user[0]);
   }
 
+  static getByEmail(email) {
+    let [user, _] = db.execute(`SELECT * FROM user WHERE email = ?`, [email]);
+    return new User(user[0]);
+  }
+
   static async getAll() {
     let [users, _] = await db.execute(`SELECT * FROM user`);
     return users.map((user) => new User(user));

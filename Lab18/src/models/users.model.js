@@ -1,4 +1,5 @@
 import db from "../utils/db.js";
+import bcrypt from "bcryptjs";
 
 class User {
   constructor(user) {
@@ -9,10 +10,20 @@ class User {
     this.last_name = user.last_name;
     this.email = user.email;
     this.age = user.age;
+    this.password = user.password;
   }
 
   static async getById(id) {
     let [user, _] = await db.execute(`SELECT * FROM user WHERE id = ?`, [id]);
+    if (!user[0]) return null;
+    return new User(user[0]);
+  }
+
+  static async getByEmail(email) {
+    let [user, _] = await db.execute(`SELECT * FROM user WHERE email = ?`, [
+      email,
+    ]);
+    if (!user[0]) return null;
     return new User(user[0]);
   }
 
@@ -26,15 +37,19 @@ class User {
     if (!user.last_name) throw new Error("Last name is required");
     if (!user.email) throw new Error("Email is required");
     if (!user.age) throw new Error("Age is required");
+    if (!user.password) throw new Error("Password is required");
     return true;
   }
 
   async post() {
-    const res = await db.execute(
-      `INSERT INTO user (name, last_name, email, age) VALUES (?, ?, ?, ?)`,
-      [this.name, this.last_name, this.email, this.age]
+    this.password = await bcrypt.hash(this.password, 12);
+
+    const [res, _] = await db.execute(
+      `INSERT INTO user (name, last_name, email, age, password) VALUES (?, ?, ?, ?, ?)`,
+      [this.name, this.last_name, this.email, this.age, this.password]
     );
-    this.id = res[0].insertId;
+    console.log(res);
+    this.id = res.insertId;
     return res;
   }
 

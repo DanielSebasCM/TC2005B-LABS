@@ -9,6 +9,7 @@ addUserForm.addEventListener("submit", async (event) => {
   const last_name = inputs["lastName"].value;
   const email = inputs["email"].value;
   const age = inputs["age"].value;
+  const password = inputs["password"].value;
 
   if (name === "" || last_name === "" || email === "" || age === "") {
     alert("Todos los campos son obligatorios");
@@ -25,9 +26,14 @@ addUserForm.addEventListener("submit", async (event) => {
       last_name,
       email,
       age,
+      password,
     }),
   });
-  window.location.reload();
+  if (res.ok) {
+    window.location.reload();
+  } else {
+    alert("No se pudo agregar el usuario");
+  }
 });
 
 deleteBtns.forEach((btn) => {
